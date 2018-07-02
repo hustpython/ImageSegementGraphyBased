@@ -1,1 +1,1 @@
-segment.exe 0.9 700 1000 fj.ppm segfj.ppm
+segment.exe 0.8 600 1000 test.ppm segfj.ppm

@@ -23,7 +23,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #include "misc.h"
 #include "pnmfile.h"
 #include "segment-image.h"
-
+#include <iostream>
+using namespace std;
 int main(int argc, char **argv) {
   if (argc != 6) {
     fprintf(stderr, "usage: %s sigma k min input(ppm) output(ppm)\n", argv[0]);
@@ -36,6 +37,14 @@ int main(int argc, char **argv) {
 	
   printf("loading input image.\n");
   image<rgb> *input = loadPPM(argv[4]);
+  //遍历图像的像素值
+  // for(int i = 0;i<(input->height());i++)
+  // {
+  //   for(int j=0;j<(input->width());j++)
+  //   {
+  //     printf("%u,%u,%u\n",(input->access[i][j]).r,(input->access[i][j]).g,(input->access[i][j]).b);
+  //   }
+  // }
   printf("processing\n");
   int num_ccs; 
   image<rgb> *seg = segment_image(input, sigma, k, min_size, &num_ccs); 
