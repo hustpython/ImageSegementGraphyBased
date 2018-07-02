@@ -12,6 +12,9 @@ return rand()%(255+1);
 #define random()(getrandom())
 int main()
 {
+    srand(time(NULL));
+    unsigned char f = (unsigned char)rand();
+    printf("%u\n",f);
     int a = random();
     unsigned char b =  getrandom();
     printf("%u\n",a);

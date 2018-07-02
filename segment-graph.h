@@ -25,12 +25,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 
 // threshold function
 #define THRESHOLD(size, c) (c/size)
-
+//结构体 edge;成员函数包括浮点型的权重w,还有两个整形的像素值a,b
 typedef struct {
   float w;
   int a, b;
 } edge;
-
+//操作符重载,用于返回两个边的权重大小的布尔值
 bool operator<(const edge &a, const edge &b) {
   return a.w < b.w;
 }
@@ -76,7 +76,7 @@ universe *segment_graph(int num_vertices, int num_edges, edge *edges,
   }
 
   // free up
-  delete threshold;
+  delete []threshold;
   return u;
 }
 

@@ -4,7 +4,7 @@ using namespace std;
 typedef struct image 
 {
     int ** access;
-}*im;
+} im;
 #define imPtr(im, x, y) &(im->access[y][x])
 int main()
 {
@@ -16,17 +16,19 @@ int main()
     }
     //ofstream fout("b.exe",ios::binary);
     //char c[1024];
-    im a;
-    a->access = new int*[4];
+    im *a = new im;
+    a->access = new int*[30];
 
     while(!fin.eof())
     {
-        fin.read((char *)imPtr(a, 0, 0),4);
+        fin.read((char *)imPtr(a, 0, 0),30);
         //fout.write(c,fin.gcount());
     }
-    fin.close();
+    //fin.close();
     //fout.close();
-    cout<<a<< endl;
-    delete [] a->access;
+    cout<<(a->access)[1][1]<< endl;
+    delete a;
     cout << "Copy over ! \n";
+    fin.close();
+    
 }

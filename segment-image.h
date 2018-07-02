@@ -29,21 +29,23 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #include <time.h>
 
 //宏定义产生0-255之间的unsigned char
-uchar getrandom()
-{
-srand(time(NULL));
-return (uchar)rand()%(255+1);
-}
+// uchar getrandom()
+// {
+// srand(time(NULL));
+// return (uchar)rand();
+// }
 
-#define random()(getrandom())
+//#define random()(getrandom())
 // random color
 rgb random_rgb(){ 
   rgb c;
   double r;
-  
-  c.r = (uchar)random();
-  c.g = (uchar)random();
-  c.b = (uchar)random();
+  //signed char取值范围是 -128 到 127(有符号位)
+  //unsigned char 取值范围是 0 - 255
+  //rand 产生 min-max之间的随机数.unsigned char : 0 - 255
+  c.r = (uchar)rand();
+  c.g = (uchar)rand();
+  c.b = (uchar)rand();
   //printf("%i,%i,%i\n",c.r,c.g,c.b);
   return c;
 }

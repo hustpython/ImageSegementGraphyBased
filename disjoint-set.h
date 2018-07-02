@@ -20,13 +20,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #define DISJOINT_SET
 
 // disjoint-set forests using union-by-rank and path compression (sort of).
-
+//结构体:uni_elt,按等级排序合并
 typedef struct {
-  int rank;
-  int p;
-  int size;
+  int rank;//等级
+  int p;//像素值
+  int size;//大小
 } uni_elt;
-
+//区域类
 class universe {
 public:
   universe(int elements);
@@ -44,6 +44,7 @@ private:
 universe::universe(int elements) {
   elts = new uni_elt[elements];
   num = elements;
+  //初始化每一个elt
   for (int i = 0; i < elements; i++) {
     elts[i].rank = 0;
     elts[i].size = 1;
@@ -62,7 +63,7 @@ int universe::find(int x) {
   elts[x].p = y;
   return y;
 }
-
+//区域连接
 void universe::join(int x, int y) {
   if (elts[x].rank > elts[y].rank) {
     elts[y].p = x;
