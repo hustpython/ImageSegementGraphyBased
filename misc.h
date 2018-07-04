@@ -28,7 +28,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #endif
 
 typedef unsigned char uchar;
-
+//定义结构体rgb
 typedef struct { uchar r, g, b; } rgb;
 
 inline bool operator==(const rgb &a, const rgb &b) {

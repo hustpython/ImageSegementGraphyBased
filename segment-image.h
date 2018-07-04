@@ -94,6 +94,15 @@ image<rgb> *segment_image(image<rgb> *im, float sigma, float c, int min_size,
   delete b;
  
   // build graph
+  //根据图像像素点构建edge
+  //4个邻域
+  // ---> x
+  // |
+  // ^ y
+  //
+  //                               #(x+1,y-1)  @(x<width-1)&&(y>0)
+  //         #(x,  y)              #(x+1,y)    @(x<width-1)
+  //         #(x,y+1)@(y<height-1) #(x+1,y+1)  @(x<width-1)&&(y<height-1)
   edge *edges = new edge[width*height*4];
   int num = 0;
   for (int y = 0; y < height; y++) {
@@ -127,6 +136,7 @@ image<rgb> *segment_image(image<rgb> *im, float sigma, float c, int min_size,
       }
     }
   }
+  printf("num:%i,height:%i,width:%i\n",num,height,width);
   delete smooth_r;
   delete smooth_g;
   delete smooth_b;

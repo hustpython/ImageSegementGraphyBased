@@ -29,9 +29,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 /* convolve src with mask.  dst is flipped! */
 static void convolve_even(image<float> *src, image<float> *dst, 
 			  std::vector<float> &mask) {
-  int width = src->width();
-  int height = src->height();
-  int len = mask.size();
+  int width = src->width();//获取src的宽度
+  int height = src->height();//获取src的高度
+  int len = mask.size();//掩膜板数组的长度
 
   for (int y = 0; y < height; y++) {
     for (int x = 0; x < width; x++) {

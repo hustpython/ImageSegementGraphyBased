@@ -3,7 +3,7 @@
 using namespace std;
 typedef struct image 
 {
-    int ** access;
+    char ** access;
 } im;
 #define imPtr(im, x, y) &(im->access[y][x])
 int main()
@@ -17,16 +17,15 @@ int main()
     //ofstream fout("b.exe",ios::binary);
     //char c[1024];
     im *a = new im;
-    a->access = new int*[30];
-
     while(!fin.eof())
     {
-        fin.read((char *)imPtr(a, 0, 0),30);
+        fin.read((char *)imPtr(a, 0, 0),sizeof(a));
         //fout.write(c,fin.gcount());
     }
     //fin.close();
     //fout.close();
-    cout<<(a->access)[1][1]<< endl;
+    char b = a->access[0][0];
+    printf("%c\n",b);
     delete a;
     cout << "Copy over ! \n";
     fin.close();
