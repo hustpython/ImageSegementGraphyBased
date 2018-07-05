@@ -1,2 +1,3 @@
 此代码为论文“Efficient Graph-Based Image Segmentation”所有。
 在此学习，并添加注释修改部分代码。
+ToDO:通过opencv显示ppm;通过trickerbar控件调整sigma,k,minsize值实现效果实时查看功能。
