@@ -18,7 +18,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 
 #ifndef DISJOINT_SET
 #define DISJOINT_SET
-
+//#include <iostream>
 // disjoint-set forests using union-by-rank and path compression (sort of).
 //结构体:uni_elt,按等级排序合并
 typedef struct {
@@ -58,6 +58,10 @@ universe::~universe() {
 
 int universe::find(int x) {
   int y = x;
+  // using namespace std;
+  // if(y==elts[y].p)
+  // {cout <<y<<":"<<elts[y].p<<endl;} 
+  //　什么情况下return a == return b
   while (y != elts[y].p)
     y = elts[y].p;
   elts[x].p = y;

@@ -22,7 +22,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307 USA
 #include <algorithm>
 #include <cmath>
 #include "disjoint-set.h"
-
+#include <stdio.h>
 // threshold function
 #define THRESHOLD(size, c) (c/size)
 //结构体 edge;成员函数包括浮点型的权重w,还有两个整形的像素值a,b
@@ -30,7 +30,7 @@ typedef struct {
   float w;
   int a, b;
 } edge;
-//操作符重载,用于返回两个边的权重大小的布尔值
+//操作符重载,用于返回两个边的权重大小的布尔值,用于排序sort函数中,可以按照权重w进行比较排序
 bool operator<(const edge &a, const edge &b) {
   return a.w < b.w;
 }
@@ -48,6 +48,7 @@ bool operator<(const edge &a, const edge &b) {
 universe *segment_graph(int num_vertices, int num_edges, edge *edges, 
 			float c) { 
   // sort edges by weight
+  //sort (begin,end)
   std::sort(edges, edges + num_edges);
 
   // make a disjoint-set forest
@@ -59,6 +60,18 @@ universe *segment_graph(int num_vertices, int num_edges, edge *edges,
     threshold[i] = THRESHOLD(1,c);
 
   // for each edge, in non-decreasing weight order...
+  //initial graphy that a != b test
+  // for (int i = 0; i < num_edges; i++) {
+  //   edge *pedge = &edges[i];
+    
+  //   // components conected by this edge
+  //   int a = u->find(pedge->a);
+  //   int b = u->find(pedge->b);
+  //   if(a==b)
+  //   {
+  //     printf("s");
+  //   }
+  // }
   for (int i = 0; i < num_edges; i++) {
     edge *pedge = &edges[i];
     

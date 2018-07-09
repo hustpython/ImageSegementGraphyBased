@@ -103,6 +103,7 @@ image<rgb> *segment_image(image<rgb> *im, float sigma, float c, int min_size,
   //                               #(x+1,y-1)  @(x<width-1)&&(y>0)
   //         #(x,  y)              #(x+1,y)    @(x<width-1)
   //         #(x,y+1)@(y<height-1) #(x+1,y+1)  @(x<width-1)&&(y<height-1)
+  // ａ表示当前(x,y)像素所在的index,ｂ表示其中一个邻域(4选一)中的像素点的index.(width*height)
   edge *edges = new edge[width*height*4];
   int num = 0;
   for (int y = 0; y < height; y++) {
@@ -148,6 +149,7 @@ image<rgb> *segment_image(image<rgb> *im, float sigma, float c, int min_size,
   for (int i = 0; i < num; i++) {
     int a = u->find(edges[i].a);
     int b = u->find(edges[i].b);
+    
     if ((a != b) && ((u->size(a) < min_size) || (u->size(b) < min_size)))
       u->join(a, b);
   }
